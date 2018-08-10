@@ -1,4 +1,4 @@
-# DCvue
+# vueTesting
 
 vue component sample
 
