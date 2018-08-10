@@ -10,15 +10,29 @@ var routes = [
   }
 ];
 
-const dynamics = require.context("@/dynamics/", true, /\.vue$/i);
-dynamics.keys().map(key => {
-  const name = key.match(/\w+/)[0];
-  routes.push({
-    path: `/${name}`,
-    name,
-    component: () => import(`@/dynamics/${name}`)
+require
+  .context("@/dynamics/", true, /\.vue$/i)
+  .keys()
+  .map(key => {
+    const name = key.match(/\w+/)[0];
+    routes.push({
+      path: `/d_${name}`,
+      name,
+      component: () => import(`@/dynamics/${name}`)
+    });
   });
-});
+
+require
+  .context("@/sample/", true, /\.vue$/i)
+  .keys()
+  .map(key => {
+    const name = key.match(/\w+/)[0];
+    routes.push({
+      path: `/s_${name}`,
+      name,
+      component: () => import(`@/sample/${name}`)
+    });
+  });
 
 var router = new Router({ routes });
 

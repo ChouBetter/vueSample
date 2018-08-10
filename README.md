@@ -1,6 +1,5 @@
 # DCvue
-dynamic load vue component for DEMO and TESTING.
 
-easy DEMO or TESTING your vue component.
+vue component sample
 
-create or put your vue component into "dynamics" folder, then choose them from left menu.
+components in the dynamics folder will auto load into router and can be choose them from left menu.

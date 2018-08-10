@@ -1,8 +1,8 @@
 <template>
-  <el-row class="tac">
+  <el-row>
   <el-col :span="24">
     <el-menu
-      class="el-menu-vertical-demo"
+      class="el-menu-vertical"
       router
       unique-opened
       @open="handleOpen"
@@ -10,11 +10,17 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
-      :default-openeds="['1']">
+      :default-openeds="['1','2']">
       <el-submenu index="1">
         <template slot="title"><span>Dynamic Components</span></template>
-        <el-menu-item-group class="over-hide" v-for="sub in menu" :key="sub.name">
-          <el-menu-item :index="sub.name" v-text="sub.name"/>
+        <el-menu-item-group class="over-hide" v-for="sub in menu_dynamic" :key="sub.name">
+          <el-menu-item :index="sub.url" v-text="sub.name"/>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="2">
+        <template slot="title"><span>Sample Components</span></template>
+        <el-menu-item-group class="over-hide" v-for="sub in menu_sample" :key="sub.name">
+          <el-menu-item :index="sub.url" v-text="sub.name"/>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -32,11 +38,17 @@
 export default {
   data() {
     return {
-      menu: require
+      menu_dynamic: require
         .context("@/dynamics/", true, /\.vue$/i)
         .keys()
         .map(key => {
-          return { name: key.match(/\w+/)[0] };
+          return { name: key.match(/\w+/)[0], url: "d_" + key.match(/\w+/)[0] };
+        }),
+      menu_sample: require
+        .context("@/sample/", true, /\.vue$/i)
+        .keys()
+        .map(key => {
+          return { name: key.match(/\w+/)[0], url: "s_" + key.match(/\w+/)[0] };
         })
     };
   },
