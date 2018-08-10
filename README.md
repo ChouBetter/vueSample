@@ -1,4 +1,4 @@
-# vueTesting
+# vueSample
 
 vue component sample
 
