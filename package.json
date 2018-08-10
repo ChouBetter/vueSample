@@ -2,7 +2,7 @@
   "name": "dynamic-component-vue",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Better <>",
+  "author": "Better.Chou",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
